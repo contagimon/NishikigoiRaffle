@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nishikigoi Motors</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+ 
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #0D0C0D;
+      color: #EDEEEF;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      overflow: hidden;
+      position: relative;
+    }
+ 
+    /* ===================== WAVE BORDER ===================== */
+    .wave-border {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0.22;
+      pointer-events: none;
+    }
+ 
+    /* ===================== LOGO ===================== */
+    #standby {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+ 
+    #standby img {
+      max-width: 620px;
+      width: 75%;
+      margin-bottom: 36px;
+    }
+ 
+    /* ===================== NAME BOX ===================== */
+    .name-box-outer {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px 52px;
+    }
+ 
+    /* Main red border box */
+    .name-box-outer::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 2px solid #6D090A;
+      background: rgba(109, 9, 10, 0.15);
+    }
+ 
+    /* Outer thin accent border */
+    .name-box-outer::after {
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border: 1px solid rgba(109, 9, 10, 0.4);
+    }
+ 
+    /* Corner accents - done with SVG overlaid */
+    .corner {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-color: #6D090A;
+      border-style: solid;
+    }
+    .corner-tl { top: -2px; left: -2px; border-width: 3px 0 0 3px; }
+    .corner-tr { top: -2px; right: -2px; border-width: 3px 3px 0 0; }
+    .corner-bl { bottom: -2px; left: -2px; border-width: 0 0 3px 3px; }
+    .corner-br { bottom: -2px; right: -2px; border-width: 0 3px 3px 0; }
+ 
+    /* Small diamond accents on sides */
+    .diamond {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: #6D090A;
+      transform: rotate(45deg);
+    }
+    .diamond-l { left: -3px; top: 50%; margin-top: -3px; }
+    .diamond-r { right: -3px; top: 50%; margin-top: -3px; }
+    .diamond-t { top: -3px; left: 50%; margin-left: -3px; }
+    .diamond-b { bottom: -3px; left: 50%; margin-left: -3px; }
+ 
+    .name-text {
+      font-size: 2.4em;
+      color: #EDEEEF;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 2;
+      font-weight: bold;
+    }
+ 
+    /* ===================== WATER RIPPLES ===================== */
+    .ripple-container {
+      position: fixed;
+      bottom: 28%;
+      left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+ 
+    .ripple {
+      position: absolute;
+      border-radius: 50%;
+      border: 1.5px solid #6C94AC;
+      opacity: 0;
+      transform: translate(-50%, -50%);
+      animation: ripple 5s ease-out infinite;
+    }
+ 
+    .ripple:nth-child(1) { width: 120px;  height: 45px;   animation-delay: 0s; }
+    .ripple:nth-child(2) { width: 260px;  height: 90px;   animation-delay: 1.25s; }
+    .ripple:nth-child(3) { width: 400px;  height: 135px;  animation-delay: 2.5s; }
+    .ripple:nth-child(4) { width: 540px;  height: 180px;  animation-delay: 3.75s; }
+    .ripple:nth-child(5) { width: 680px;  height: 225px;  animation-delay: 5s; }
+ 
+    @keyframes ripple {
+      0%   { opacity: 0.55; transform: translate(-50%, -50%) scale(0.5); }
+      100% { opacity: 0;    transform: translate(-50%, -50%) scale(1); }
+    }
+  </style>
+</head>
+<body>
+ 
+  <!-- Wave border -->
+  <svg class="wave-border" viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,50 C180,100 360,0 540,50 C720,100 900,0 1080,50 C1260,100 1380,25 1440,50 L1440,100 L0,100 Z"
+      fill="#6C94AC"/>
+  </svg>
+ 
+  <!-- Water ripples -->
+  <div class="ripple-container">
+    <div class="ripple"></div>
+    <div class="ripple"></div>
+    <div class="ripple"></div>
+    <div class="ripple"></div>
+    <div class="ripple"></div>
+  </div>
+ 
+  <!-- Logo and name box -->
+  <div id="standby">
+    <img src="https://github.com/contagimon/NishikigoiRaffle/blob/main/nishikigoilogo.png?raw=true" alt="Nishikigoi Motors" />
+    <div class="name-box-outer">
+      <span class="corner corner-tl"></span>
+      <span class="corner corner-tr"></span>
+      <span class="corner corner-bl"></span>
+      <span class="corner corner-br"></span>
+      <span class="diamond diamond-l"></span>
+      <span class="diamond diamond-r"></span>
+      <span class="diamond diamond-t"></span>
+      <span class="diamond diamond-b"></span>
+      <span class="name-text">Nishikigoi Motors</span>
+    </div>
+  </div>
+ 
+</body>
+</html>
